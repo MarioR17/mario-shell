@@ -3,8 +3,8 @@
 
 void shellLoop(void);
 char* readLine(void);
-//char** splitLine(char* line);
-//int executeCommand(char** args);
+char** splitLine(char* line);
+int executeCommand(char** args);
 
 int main(int argc, char* argv[]) {
     (void)argv[argc-1];
@@ -20,18 +20,18 @@ int main(int argc, char* argv[]) {
 
 void shellLoop(void) {
     char *line;
-    //char **args;
-    //int status;
+    char **args;
+    int status;
 
     do {
         printf("> ");
         line = readLine();
-        //args = splitLine(line);
-        //status = executeCommand(args);
+        args = splitLine(line);
+        status = executeCommand(args);
 
         free(line);
-        //free(args);
-    } while (1);
+        free(args);
+    } while (status);
 }
 
 #define RL_BUFSIZE 1024
